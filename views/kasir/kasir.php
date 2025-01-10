@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-image: url('gambar/jim1.jpg');
+            background-image: url('gambar/jim2.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -15,6 +15,13 @@
     <title>Cashier Dashboard</title>
 </head>
 <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <!-- Logout Button in Top Right Corner -->
+    <div class="absolute top-4 right-4">
+        <a href="index.php?modul=login&fitur=login" 
+           class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium text-sm px-5 py-2.5 rounded-full">
+           Log out
+        </a>
+    </div>
 
     <!-- Cashier Dashboard Container -->
     <div class="bg-white p-8 rounded-lg shadow-lg w-96">
@@ -38,7 +45,6 @@
     </div>
 
     <script>
-        // Sample list of tokens in the queue (this would typically come from a backend or database)
         const tokenQueue = [
             "GYM-TOKEN-123456",
             "GYM-TOKEN-234567",
@@ -47,12 +53,10 @@
             "GYM-TOKEN-567890"
         ];
 
-        // Function to check if the entered token is in the queue
         function checkToken() {
             const token = document.getElementById('token').value.trim();
             const resultElement = document.getElementById('result');
             
-            // Check if the token exists in the queue
             if (tokenQueue.includes(token)) {
                 resultElement.textContent = "Pelanggan Terdaftar, Silahkan Masuk";
                 resultElement.classList.remove('text-red-500');

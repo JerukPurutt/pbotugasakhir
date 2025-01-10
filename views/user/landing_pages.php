@@ -14,13 +14,15 @@
             display: block;
             opacity: 1;
         }
+        .carousel-slide {
+            transition: transform 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans" id="home">
     <nav class="fixed top-0 w-full bg-white border-gray-200 dark:bg-gray-900 z-50 shadow-md">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="img/logo1.png" class="h-8" alt="Flowbite Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sangym</span>
             </a>
                 <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -36,15 +38,32 @@
             </div>
         </div>
     </nav>
-    <!-- kata landing page -->
-    <section class="bg-cover bg-center py-28 mt-16 relative " style="background-image: url('gambar/jim.jpg');">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative container mx-auto text-center text-white">
-                <h1 class="text-5xl font-extrabold mb-6 drop-shadow-md">Wujudkan Tubuh Impianmu</h1>
-                    <p class="text-xl mb-8 drop-shadow-md">Reservasi gym sekarang dan mulai perjalanan kebugaranmu.</p>
-                    <a href="#paket" class="inline-block text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:from-blue-500 hover:to-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-full text-lg px-8 py-4 text-center transition-transform transform hover:scale-105">Lihat Paket</a>
-        </div>
-    </section>
+    <!-- crausel -->
+    <div class="relative w-full h-screen overflow-hidden">
+    <!-- Teks di depan slide -->
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
+        <h1 class="text-5xl font-extrabold mb-2 drop-shadow-md">Transformasi Tubuh, Transformasi Hidup</h1>
+        <p class="text-4xl font-bold">Program Pelatihan Profesional untuk Semua Tingkatan</p>
+    </div>
+
+    <!-- Carousel Slides -->
+    <div id="carousel" class="absolute inset-0 flex carousel-slide">
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0 bg-cover bg-center" style="background-image: url('gambar/jim6.jpg');"></div>
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0 bg-cover bg-center" style="background-image: url('gambar/jim3.jpg');"></div>
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0 bg-cover bg-center" style="background-image: url('gambar/jim4.jpg');"></div>
+    </div>
+</div>
+    <!-- Navigation Buttons -->
+    <button id="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 text-black p-2 rounded-full">
+        &larr;
+    </button>
+    <button id="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 text-black p-2 rounded-full">
+        &rarr;
+    </button>
+    </div>
     <section class="py-12 bg-gradient-to-r from-blue-50 to-blue-100" id="about">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-extrabold mb-6 text-gray-900">Mengapa Menjaga Kesehatan Itu Penting?</h2>
@@ -96,6 +115,7 @@
                             <button type="button" class=" w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reservasi</button>
                         </div>
                     </div>
+                    
                 </div>
                 <style>
                 /* Hide default scrollbar */
@@ -117,7 +137,6 @@
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
               <a href="https://flowbite.com/" class="flex items-center">
-                  <img src="../img/logo1.png" class="h-8 me-3" alt="FlowBite Logo" />
                   <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sangym</span>
               </a>
           </div>
@@ -196,6 +215,31 @@
       </div>
     </div>
 </footer>
+<script>
+  const carousel = document.getElementById('carousel');
+  const slides = carousel.children;
+  const totalSlides = slides.length;
+  let currentSlide = 0;
 
+  function showSlide(index) {
+    const offset = -index * 100;
+    carousel.style.transform = `translateX(${offset}%)`;
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+  }
+
+  document.getElementById('next').addEventListener('click', nextSlide);
+  document.getElementById('prev').addEventListener('click', prevSlide);
+
+  setInterval(nextSlide, 5000); // Change slide every 5 seconds
+</script>
 </body>
 </html>

@@ -35,10 +35,9 @@ class LoginController
                     if ($user['role']['role_name'] === 'user') {
                         include 'views/user/landing_pages.php';
                     } elseif ($user['role']['role_name'] === 'admin') {
-                        echo "admin";
                         include 'views/admin/dashboard.php';
                     } elseif($user['role']['role_name'] === 'kasir') {
-                        header("Location: index.php?modul=kurir&fitur=list");
+                        include 'views/kasir/kasir.php';;
                     } else {
                         $error = "Role tidak dikenali.";
                     }
