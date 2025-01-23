@@ -7,22 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-    <!-- Navbar -->
     <?php include 'views/include/navbar.php'; ?>
-    <div class="flex">
-        <!-- Sidebar -->
-        <?php include 'views/include/sidebar.php'; ?>
-        <!-- Main Content -->
-        <main class="flex-1 p-8 ml-40">
-            <div class="m-20 container mx-auto ml-40 max-w-4xl">
-                <!-- Button to Insert New Barang -->
+        <div class="flex">
+            <?php include 'views/include/sidebar.php'; ?>
+             <main class="flex-1 p-8 ml-40">
+                <div class="m-20 container mx-auto ml-40 max-w-4xl">
                 <div class="mb-4">
                 <button 
                     onclick="window.location.href='index.php?modul=paket&fitur=input'"
                     class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                     Insert New Paket
                 </button>
-                    
                 </div>
                 <!-- Barang Table -->
                 <div class="bg-white shadow-md rounded my-6 overflow-hidden">
@@ -76,15 +71,12 @@
                                     <td colspan="6" class="text-center py-4">Tidak ada data paket</td>
                                 </tr>
                             <?php } ?>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </main>
     </div>
-
 </body>
 
 </html>

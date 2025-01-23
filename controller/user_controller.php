@@ -4,13 +4,13 @@ require_once 'model/role_model.php';
 
 class UserController {
     private $model_user;
-    private $nama_role;
+private $nama_role;
 
     public function __construct() {
         $this->model_user = new ModelUser();
         $this->nama_role = new ModelRole();
     }
-    
+
     public function listUser() {
         $users = $this->model_user->getAllUser();
         include 'views/admin/user_list.php';

@@ -64,8 +64,6 @@
                                                 </svg>
                                             </button>
                                         </form>
-
-
                                         </td>
                                     </tr>
                                 <?php }

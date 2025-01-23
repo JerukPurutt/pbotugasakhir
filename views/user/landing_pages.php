@@ -6,22 +6,20 @@
     <title>Reservasi Gym</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .slide {
+        .slide::-webkit-scrollbar {
             display: none; /
             transition: opacity 1s ease-in-out; 
-        }
-        .active {
+        }.active {
             display: block;
             opacity: 1;
-        }
-        .carousel-slide {
+        }.carousel-slide::-webkit-scrollbar{
             transition: transform 0.5s ease-in-out;
         }
     </style>
 </head>
 <body class="bg-gray-100 font-sans" id="home">
     <nav class="fixed top-0 w-full bg-white border-gray-200 dark:bg-gray-900 z-50 shadow-md">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-8">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sangym</span>
             </a>
@@ -30,8 +28,8 @@
                 </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
                 <ul class="flex flex-row space-x-8">
-                    <li><a href="#home" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">Home</a></li>
-                    <li><a href="#" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">Reservasi Saya</a></li>
+                    <li><a href="index.php?modul=reservasi&fitur=dashboard" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">Home</a></li>
+                    <li><a href="index.php?modul=reservasi&fitur=list" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">Reservasi Saya</a></li>
                     <li><a href="#about" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">About</a></li>
                     <li><a href="#footer" class="py-2 text-gray-900 hover:text-blue-700 dark:text-white">Contact</a></li>
                 </ul>
@@ -42,9 +40,26 @@
     <div class="relative w-full h-screen overflow-hidden">
     <!-- Teks di depan slide -->
     <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
-        <h1 class="text-5xl font-extrabold mb-2 drop-shadow-md">Transformasi Tubuh, Transformasi Hidup</h1>
-        <p class="text-4xl font-bold">Program Pelatihan Profesional untuk Semua Tingkatan</p>
+    <h1 class="text-5xl font-extrabold mb-2 drop-shadow-md">Transformasi Tubuh, Transformasi Hidup</h1>
+    <p class="text-4xl ">Program Pelatihan Profesional untuk Semua Tingkatan</p>
+    <div class="flex items-center justify-center mt-6">
+        <div class="relative group">
+            <button class="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+                <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                    <span class="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+                        <span class="transition-all duration-500 group-hover:translate-x-1">Reservasi Sekarang</span>
+                            <button class="submit" a-href=>
+                                <div class="relative z-10 flex items-center space-x-2">
+                                    <path clip-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </span>
+                </button>
+            </div>
+        </div>
     </div>
+
 
     <!-- Carousel Slides -->
     <div id="carousel" class="absolute inset-0 flex carousel-slide">
@@ -56,13 +71,6 @@
         <div class="w-full flex-shrink-0 bg-cover bg-center" style="background-image: url('gambar/jim4.jpg');"></div>
     </div>
 </div>
-    <!-- Navigation Buttons -->
-    <button id="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 text-black p-2 rounded-full">
-        &larr;
-    </button>
-    <button id="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 text-black p-2 rounded-full">
-        &rarr;
-    </button>
     </div>
     <section class="py-12 bg-gradient-to-r from-blue-50 to-blue-100" id="about">
         <div class="container mx-auto text-center">
@@ -78,45 +86,49 @@
             <h2 class="text-3xl font-bold mb-6 text-center" >Paket Pilihan</h2>
             <div class="flex space-x-4 overflow-x-auto">
                 <!-- Card Container -->
-                <div class="flex overflow-x-auto space-x-4 p-4 scrollbar-hide">
-                    <!-- Card 1 -->
-                    <div class="flex-none w-64 bg-white border border-gray-200 rounded-lg shadow">
-                        <img class="w-full h-40 object-cover rounded-t-lg" src="gambar/jim4.jpg" alt="Paket Harian" />
-                        <div class="p-5">
-                            <h5 class="text-2xl font-bold mb-2">Paket Harian</h5>
-                            <p class="mb-3 font-normal text-gray-700">Latihan sehari penuh dengan fasilitas lengkap.</p>
-                            <button type="button" class=" w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reservasi</button>
-                        </div>
+                <!-- <form action="index.php?modul=login&fitur=login" method="POST" class="space-y-3"> -->
+                        <div class="flex overflow-x-auto space-x-4 p-4 scrollbar-hide">
+                            <?php if (!empty($pakets)) {
+                                foreach ($pakets as $barangs) { ?> 
+                                    <div class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+                                        <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
+                                            <img src="gambar/<?php echo htmlspecialchars($barangs['gambar_paket']); ?>" alt="<?php echo htmlspecialchars($barangs['nama_paket']); ?>" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-6">
+                                            <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                                                <?php echo htmlspecialchars($barangs['nama_paket'], ENT_QUOTES, 'UTF-8'); ?>
+                                            </h5>
+                                            <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+                                                Rp. <?php echo htmlspecialchars($barangs['harga_paket']); ?>
+                                            </p>
+                                            <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+                                                Durasi: <?php echo htmlspecialchars($barangs['durasi']); ?> Hari
+                                            </p>
+                                        </div> 
+                                        <div class="p-6 pt-0">
+                                        <div class="p-6 pt-0">
+                                            <form method="POST" action="index.php?modul=reservasi&fitur=save">
+                                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']; ?>">
+                                                <input type="hidden" name="paket_id" value="<?php echo htmlspecialchars($barangs['id_paket']); ?>">
+                                                <input type="hidden" name="username" value="<?php echo htmlspecialchars($_SESSION['user']['username']); ?>">
+                                                <input type="hidden" name="harga_paket" value="<?php echo htmlspecialchars($barangs['harga_paket']); ?>">
+                                                <input type="hidden" name="status" value="0"> 
+                                                <button type="submit" class="w-full bg-black h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#1e3a8a] before:to-[#3b82f6] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">
+                                                    Reservasi
+                                                </button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <?php }
+                                    } else { ?>
+                                <div class="text-center py-4">Tidak ada data paket</div>
+                        <?php } ?>
                     </div>
-                    <!-- Card 2 -->
-                    <div class="flex-none w-64 bg-white border border-gray-200 rounded-lg shadow">
-                        <img class="w-full h-40 object-cover rounded-t-lg" src="gambar/jim5.jpg" alt="Paket Mingguan" />
-                        <div class="p-5">
-                            <h5 class="text-2xl font-bold mb-2">Paket Mingguan</h5>
-                            <p class="mb-3 font-normal text-gray-700">Paket mingguan yang cocok untuk pemula.</p>
-                            <button type="button" class=" w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reservasi</button>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="flex-none w-64 bg-white border border-gray-200 rounded-lg shadow">
-                        <img class="w-full h-40 object-cover rounded-t-lg" src="gambar/jim3.jpg" alt="Paket Bulanan" />
-                        <div class="p-5">
-                            <h5 class="text-2xl font-bold mb-2">Paket Bulanan</h5>
-                            <p class="mb-3 font-normal text-gray-700">Dapatkan harga lebih murah dengan paket bulanan.</p>
-                            <button type="button" class=" w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="form_reservasi.php">Reservasi</a></button>
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="flex-none w-64 bg-white border border-gray-200 rounded-lg shadow">
-                        <img class="w-full h-40 object-cover rounded-t-lg" src="gambar/jim1.jpg" alt="Paket Bulanan" />
-                        <div class="p-5">
-                            <h5 class="text-2xl font-bold mb-2">Paket Tahunan</h5>
-                            <p class="mb-3 font-normal text-gray-700">Paket khsusus yang bisa Sharing dengan orang lain.</p>
-                            <button type="button" class=" w-full text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reservasi</button>
-                        </div>
-                    </div>
-                    
-                </div>
+                <!-- </form>
+
+                </form> -->
+
                 <style>
                 /* Hide default scrollbar */
                 .scrollbar-hide::-webkit-scrollbar {

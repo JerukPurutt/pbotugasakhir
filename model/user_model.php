@@ -11,6 +11,7 @@ class ModelUser {
         $this->model_role = new ModelRole();
     }
 
+
     public function connectDatabase() {
         $database = new Database(); // Membuat instance dari class Database
         $this->db = $database->connect(); // Mengambil koneksi dari class Database
@@ -30,15 +31,20 @@ class ModelUser {
     }
 
     public function createUser($username, $password, $email, $role_name) {
-        $query = "INSERT INTO users (username, password, email, role_name) VALUES (?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssss", $username, $password, $email, $role_name);
-        if($stmt->execute()){
-            return true;
+        try {
+            $query = "INSERT INTO users (username, password, email, role_name) VALUES (?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ssss", $username, $password, $email, $role_name);
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (Exception $e) {
+            // Tangani exception, misalnya log atau tampilkan pesan kesalahan
+            echo "Error: " . $e->getMessage();
+            return false;
         }
-        return false;
-        
     }
+    
 
     public function updateUser($username, $password, $email, $role_name, $user_id) {
         $query = "UPDATE users SET username = ?, password = ?, email = ?, role_name = ? WHERE user_id = ?";

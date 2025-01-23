@@ -1,4 +1,4 @@
-<?php
+f<?php
 class Database {
     private $db;
 

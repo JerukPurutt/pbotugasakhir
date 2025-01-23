@@ -14,7 +14,7 @@
     </style>
     <title>Cashier Dashboard</title>
 </head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <!-- Logout Button in Top Right Corner -->
     <div class="absolute top-4 right-4">
         <a href="index.php?modul=login&fitur=login" 
@@ -24,22 +24,19 @@
     </div>
 
     <!-- Cashier Dashboard Container -->
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96 ">
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Kasir Sangym</h2>
-        
         <!-- Token Check Form -->
         <div class="mb-6">
             <label for="token" class="block text-sm font-medium text-gray-700">Masukkan Token</label>
             <input type="text" id="token" name="token" class="mt-2 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter Token">
         </div>
-
         <!-- Check Button -->
         <div class="flex justify-center">
             <button onclick="checkToken()" class="bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 w-full">
                 Check Token
             </button>
         </div>
-
         <!-- Result Message -->
         <div id="result" class="mt-4 text-center text-lg font-semibold text-gray-800"></div>
     </div>

@@ -7,12 +7,10 @@ class ModelRole{
     public function __construct(){
         $this->connectDatabase();
     }
-
     public function connectDatabase() {
         $database = new Database(); // Membuat instance dari class Database
         $this->db = $database->connect(); // Mengambil koneksi dari class Database
     }
-
         public function getAllRole(){
             $query = "SELECT * FROM roles";
             $result = $this->db->query($query);

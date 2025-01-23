@@ -1,6 +1,5 @@
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 shadow-md">
-        <div class="px-6 py-4 flex justify-between items-center">
-            <!-- Logo and Brand -->
+    <div class="px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell text-gray-800 dark:text-white">
                     <path d="M14.4 14.4 9.6 9.6"/>
@@ -14,5 +13,5 @@
 
             <!-- Logout Button -->
             <a href="index.php?modul=login&fitur=login" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5">Log out</a>
-        </div>
-    </nav>
+    </div>
+</nav>

@@ -1,13 +1,15 @@
 <?php
 require_once 'model/user_model.php';
+require_once 'model/paket_model.php';
 
 class LoginController
 {
     private $modelUser;
-
+    public $modelPaket;
     public function __construct()
     {
         $this->modelUser = new ModelUser();
+        $this->modelPaket = new ModelPaket();
     }
 
     public function login()
@@ -19,21 +21,27 @@ class LoginController
             // echo "<br>";
             // echo $password;
     
-            if ($username && $password) {
                 $user = $this->modelUser->getUserByName($username);
                 // echo"<pre>";
                 // print_r($user);
+                // print_r($password);
                 // echo"</pre>";
-                if ($user && $user['password'] === $password) {
+                // die();
+                if ($username && $user['password'] == $password) {
                     // Simpan informasi pengguna di session
-                    $_SESSION['user'] = $user;
+                    $_SESSION['user'] = [
+                        'id' => $user['user_id'],
+                        'username' => $user['username'],
+                        'email' => $user['email'],
+                        // 'role' => $user['role_name']
+                    ];
                     // echo"<pre>";
                     // print_r($_SESSION['user']);
                     // echo"</pre>";
-    
                     // Pengkondisian berdasarkan role
                     if ($user['role']['role_name'] === 'user') {
-                        include 'views/user/landing_pages.php';
+                        $pakets = $this->modelPaket->getAllPaket();
+                        include 'views/user/landing_pages.php'; 
                     } elseif ($user['role']['role_name'] === 'admin') {
                         include 'views/admin/dashboard.php';
                     } elseif($user['role']['role_name'] === 'kasir') {
@@ -44,10 +52,10 @@ class LoginController
                     exit;
                 } else {
                     $error = "Username atau password salah.";
+
+                    header('location: index.php?modul=login&fitur=login');
                 }
-            } else {
-                $error = "Harap isi semua kolom.";
-            }
+            
         }
     
         include 'views/login.php';
